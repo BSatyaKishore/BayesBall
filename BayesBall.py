@@ -39,6 +39,7 @@ def MainBayesBall(BayesianNetwork, X, Y, Z):
 	reverse = Reverse(BayesianNetwork)
 	LeftNodes = BayesianNetwork[X]
 	RightNodes = reverse[X]
+	# TODO: Change Z to Z + descendents(Z)
 	for i in LeftNodes:
 		toReturn = BayesBall(BayesianNetwork, reverse, X, Y, Z, False, i, [X, i])
 		if toReturn: return toReturn
@@ -50,4 +51,17 @@ def MainBayesBall(BayesianNetwork, X, Y, Z):
 debugging = False
 if debugging: print MainBayesBall(Read(), 0, 3, [1,2])
 
-print MainBayesBall(Read(), 0, 4, [2])
+def BayesBallOutput(out):
+	if out == None:
+		print "yes"
+		return
+	st = ""
+	for i in out:
+		if st == "":
+			st = str(i+1)
+		else:
+			st = st + ","+ str(i+1)
+	st = "["+st+"]"
+	print 'no '+st
+
+BayesBallOutput(MainBayesBall(Read(), 0, 4, []))
