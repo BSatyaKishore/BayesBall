@@ -21,6 +21,17 @@ def Write(BayesianNetwork):
 		toPrint += ']'
 		print i+1, toPrint
 
+def Reverse(BayesianNetwork):
+	toReturn = []
+	for i in BayesianNetwork:
+		toReturn.append([])
+	for i in range(len(BayesianNetwork)):
+		for j in BayesianNetwork[i]:
+			toReturn[j].append(i)
+	return toReturn
+
 debugging = False
 if debugging:
 	Write(Read())
+
+#print Reverse(Read())
