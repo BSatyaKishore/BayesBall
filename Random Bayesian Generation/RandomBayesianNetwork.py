@@ -1,5 +1,5 @@
 # Idea taken from http://mathematica.stackexchange.com/questions/608/how-to-generate-random-directed-acyclic-graphs
-import random
+import random, sys
 
 def GenerateDAG(n, k):
 	# Adjacency Matrix
@@ -24,4 +24,5 @@ def DAGPrinter(DAG):
 	for i in range(len(DAG)):
 		print PrintArray(i,DAG[i])
 
-DAGPrinter(GenerateDAG(5,3))
+print (sys.argv[1])
+DAGPrinter(GenerateDAG(int(sys.argv[1]),int(sys.argv[2])))

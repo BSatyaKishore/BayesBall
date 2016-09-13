@@ -4,10 +4,13 @@ def Parse(text):
 		toReturn.append(i-1)
 	return toReturn
 
-def Read():
+def Read(fileName):
 	BayesianNetwork = []
-	for i in range(input()):
-		BayesianNetwork.append(Parse(raw_input()))
+	f = open(fileName, 'r')
+	lines = f.readlines()[1:]
+	for i in lines:
+		BayesianNetwork.append(Parse(i))
+	f.close()
 	return BayesianNetwork
 
 def Write(BayesianNetwork):
@@ -32,6 +35,6 @@ def Reverse(BayesianNetwork):
 
 debugging = False
 if debugging:
-	Write(Read())
+	Write(Read('sample-bn.txt'))
 
 #print Reverse(Read())
